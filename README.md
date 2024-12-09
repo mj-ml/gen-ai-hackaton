@@ -30,8 +30,9 @@ notebooks/priyanka_RAG_Crew_AI.ipynb
 
 which helps to generate a database of knowledge which is later used in the process.
 
+![img_2.png](img/img_2.png)
 
-
+![img_3.png](img/img_3.png)
 1. Environment Setup:
 API Key Setup:
     - The code starts by importing necessary libraries and setting environment variables for two APIs: GROQ and Tavily.
