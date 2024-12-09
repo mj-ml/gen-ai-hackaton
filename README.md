@@ -120,13 +120,7 @@ http://localhost:3000/
 
 user: admin, password: admin
 
-![img_1.png](img%2Fimg_1.png)
 
 ## Notebooks
 
-Notebooks are stored in the directory notebooks
-
-- inside you can find the evaluations
-- basic examples
-- RAG evaluation 
 
