@@ -1,4 +1,4 @@
-# llm-shop-assistant
+# Breast cancer partient assistant
 ![assistant.jpg](img%2Fassistant.jpg)
 # Project description
 
