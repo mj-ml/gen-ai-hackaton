@@ -42,7 +42,7 @@ def main():
             mistral_eval, raw_eval = evaluate_answer(
                 question=user_question, answer=mistral_ans
             )
-
+            mistral_ans += "Source: https://www.esmo.org/content/download/6593/114959/1/en-breast-cancer-guide-for-patients.pdf "
             answer_data = {}
             answer_data["answer"] = mistral_ans
             answer_data["model_used"] = "mistral-small-2409"

@@ -39,7 +39,7 @@ Example questions
 - I have breast cancer, please help me.
 - I have 2 degree cancer, what can be done?
 
-![img.png](img/img.png)
+![img.png](img/img_1.png)
 
 ## How to run it?
 
