@@ -22,7 +22,7 @@ knowledge.
 
 There are two scripts.
 
-1. Agentic RAG
+## AGENTIC AI APPROACH
 
 ```
 notebooks/priyanka_RAG_Crew_AI.ipynb
@@ -30,8 +30,58 @@ notebooks/priyanka_RAG_Crew_AI.ipynb
 
 which helps to generate a database of knowledge which is later used in the process.
 
-2. RAG
 
+
+1. Environment Setup:
+API Key Setup:
+    - The code starts by importing necessary libraries and setting environment variables for two APIs: GROQ and Tavily.
+    - The keys for these APIs are fetched from the userdata in Google Colab and set as environment variables using os.environ.
+
+2. Initializing Language Model (LLM) and Tools:
+Language Model (LLM):
+The ChatOpenAI from langchain_openai is used to initialize the language model with settings: 
+    - API Base: The base URL for the OpenAI API through GROQ.
+    - Model: The code uses the "groq/llama3-8b-8192" model, a large language model for answering questions.
+    - Temperature and Max Tokens: These parameters control the randomness of responses and the response length.
+
+3. PDF Search Tool:
+PDFSearchTool is initialized with a PDF (s41572-019-0111-2.pdf) and a configuration that specifies how to retrieve information from the document. The embedder and llm configurations define the embedding model and the language model used for generating answers.
+4. Web Search Tool:
+TavilySearchResults is used for web search, configured with k=3 to retrieve the top 3 search results.
+5. Routing Tool:
+    - The router_tool function is a simple logic tool that routes the user’s question to either a vectorstore search or a web search, based on keywords in the question.
+    - If the question contains "Breast Cancer", it directs the question to the vectorstore (using PDF search). Otherwise, it directs the question to the web search.
+6. Defining Agents:
+    1) Router Agent:
+    - This agent decides whether to use the vectorstore or web search based on the question.
+    - It has a backstory to explain the role, helping it decide the appropriate tool for answering the question.
+    - The agent uses the llm initialized earlier to perform decision-making tasks.
+
+    2) Retriever Agent:
+    - This agent is responsible for retrieving information once the question is routed by the Router Agent.
+    - If the router directs to web search, the agent uses web_search_tool to retrieve information from the internet.
+    - If the router directs to vectorstore, the agent uses rag_tool to search within the PDF.
+   3) Grader Agent:
+   This agent assesses the relevance of the retrieved documents. It checks whether the information retrieved is relevant to the user’s question and grades it accordingly.
+7. Tasks:
+
+    A) Router Task:
+    - This task is responsible for analyzing the keywords in the user’s question and determining whether it’s suitable for a vectorstore search or a web search.
+      - It returns either 'vectorstore' or 'websearch' as output, which is then used by the Retriever Agent.
+    B) Retriever Task:
+This task uses the output of the Router Task to decide which tool to use for retrieving information. If the result is 'websearch', it uses the web_search_tool, and if the result is 'vectorstore', it uses the rag_tool.
+8. Crew Setup:
+    - The Crew is created by combining the agents (Router_Agent, Retriever_Agent, and Grader_agent) and the tasks (router_task, retriever_task).
+    - The Crew is responsible for executing the tasks in sequence and coordinating the agents to provide answers.
+9. Gradio Interface:
+    - The Gradio Interface is created to allow users to interact with the system via a web interface. Users can ask a question, and the system will process it using the RAG pipeline and return the result.
+    - The interface has an input field for the question and an output field for displaying the answer.
+10. Launching the Interface:
+Finally, the iface.launch() command launches the Gradio interface, making it available for interaction.
+    (author Pryianka)
+
+---- 
+## RAG 
 which serves the generated database.
 
 Example questions
