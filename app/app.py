@@ -12,7 +12,7 @@ def log(message):
 
 
 def main():
-    st.title("Breast Cancer LLM Assistant")
+    st.title("ClaudIA, the Cheerful Cancer Ally Revolutionizing Cancer Patient Support")
 
     # Session state initialization
     if "conversation_id" not in st.session_state:
