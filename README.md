@@ -35,9 +35,11 @@ The DBs are initialised in init.dockerfile which is run in the main docker compo
 
 ## Dataset
 
-I adapted
-https://www.kaggle.com/datasets/saadmakhdoom/ecommerce-faq-chatbot-dataset?resource=download
-by adding some additional questions.
+The dataset is generated using 
+```
+notebooks/priyanka_RAG_Crew_AI.ipynb
+```
+
 
 # Technical description
 
